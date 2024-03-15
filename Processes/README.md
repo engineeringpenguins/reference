@@ -12,3 +12,4 @@ MS SQL, PostgreSQL, and Database 101
 Programming terminology and concepts  
 Automation via Ansible, Jinja, and Teraform  
 Intune and Endpoint Manager Administration  
+VEEAM O365 backups (setup)  
