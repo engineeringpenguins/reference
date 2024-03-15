@@ -1,6 +1,6 @@
 # Active Directory Certificate Serivces  
 
-Active Directory (AD) Certificate Services (CS) can be pretty rough to work with when things dont behave correctly. This article should run through everything you would need to be conversational (read: complain to sysadmins) about ADCS.
+Active Directory (AD) Certificate Services (CS) can be pretty rough to work with when things dont behave correctly. This article will run through everything you would need to be conversational (read: complain to sysadmins) about ADCS.
 
 ## Introduction and Background ('How to SSL good')  
 
@@ -39,7 +39,7 @@ I'm using Windows Server 2022 for this example but anything previous Server rele
 
 ![Begin setup of ADCS](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/adcs_setup.png)  
 
-Use appropriate level credentials to approve configuration of ADCS, check the boxes for whatever services you added and want to setup now, leave the radio button selected for 'Enterprise CA', select 'root CA', select 'create a new private key', leave the default at RSA 2048, leave the name as default (if you want to change it I would reccomend having '-CA' on the end of the name for organization), leave the validity period at 5 years, leave the default location for the certificate database, select configure to finish setup.
+Use appropriate level credentials to approve configuration of ADCS, check the box for ADCS (dont check other services we enabled yet), leave the radio button selected for 'Enterprise CA', select 'root CA', select 'create a new private key', leave the default at RSA 2048, leave the name as default (if you want to change it I would reccomend having '-CA' on the end of the name for organization), leave the validity period at 5 years, leave the default location for the certificate database, select configure to finish setup.
 
 There are only a few places that you will likely go in your time using ADCS. If you left click on the name of your CA in the navigation column and then right click the name of the CA you will get a selection menu, hover over 'All tasks' with your mouse.  
 
@@ -56,10 +56,10 @@ If you select 'Issued Certificates' you get a list of all certificates **this** 
 ## Terms (Buzzwords)  
 
 - **Certificate** - File that encrypts communication or data (aka public key certificate)  
-- **PKI** - Public Key Infrastructure, the system or framework you use to store/manage/approve/revoke/issue certificates  
 - **Encryption** - Proceess that results in altered data that can only be restored by knowing the algorithm and password used to change it  
 - **RSA** - Mathematical algorithm that encrypts/decrypts data using a public/private key pair
 - **Wildcard** - Way to include every variation of a domain with a single definition (ex. *.google.com)  
+- **PKI** - Public Key Infrastructure, the system or framework you use to store/manage/approve/revoke/issue certificates  
 
 ### Certificate Authorities:  
 
@@ -74,7 +74,9 @@ If you select 'Issued Certificates' you get a list of all certificates **this** 
 - **SSL** - Secure Socket Layer, a protocol that encrypts data  
 - **TLS** - Transport Layer Security, successor to SSL and is a protocol that encrypts data  
   - TLS is often refered to as SSL even though they are different protocols, dont get confused  
+- **SCEP** - Simple Certificate Enrollment Protocol, way to request a certificate for non AD devices (ex. switches)
 - **HTTP, FTP, Telnet, SMB1, SNMP1** - unencrypted communication protocols referenced in this article  
+- **OCSP** - Online Certificate Status Protocol, used in tandem with CRLs to determine validity of an issued certificate  
 - **HTTPS, FTPS/VSFTP/SCP, SSH, SMB3, SNMP3** - encrypted communication protocols referenced in this article  
 
 ### Keys:
@@ -94,12 +96,11 @@ If you select 'Issued Certificates' you get a list of all certificates **this** 
 
 - **ADCS** - Active Directory Certificate Services, Certificate management in Active Directory  
 - **CRL** - Certificate Revocation List, list of revoked certificates that all CA's in the PKI must be agree (sync) on  
-- **OCSP** - Online Certificate Status Protocol, used in tandem with CRLs to determine validity of an issued certificate  
 
 ## OpenSSL and CertReq/Util Troubleshooting
 
 - Check if OSCP thinks example.pem is revoked  
-  'openssl ocsp -issuer issuer_cert.pem -cert example.pem -text -url http://ocsp.responder.url'   
+  'openssl ocsp -issuer issuer_cert.pem -cert example.pem -text -url http://ocsp.responder.url'  
 - Print a certificate file to the console  
   'openssl x509 -in certificate.crt -text -noout'  
 - Print a certificate from a website to the console  
@@ -120,10 +121,19 @@ If you select 'Issued Certificates' you get a list of all certificates **this** 
 - Add a new Root CA using cert file  
   'certutil -addstore "Root" newRootCA.crt'  
 
-## References
-
-I don't have any external references or resources to provide. Its fairly intuitive so lab it up and click around.  
-
 ## Concepts Summary
 
 For a machine to trust a website using SSL the machine must 'trust' the certificate the website is using. At minimum there will be one Certificate Authority that signs a certificate (like a CEO signing approval on a document) but usually there are more than one Certificate Authorities signing a document (The CEO has authorized the CFO to sign a document with the CEO's authority). For a machine to trust that certificate it must trust every certificate authority listed in the certificate chain.  
+
+## References and Further Reading
+
+I don't have any external references or resources to provide. Its fairly intuitive so lab it up and click around.  
+
+## Improving this article
+
+If there is a usecase for it, I will add more content to this article:
+
+- Online enrollment via SCEP/NDES  
+- Usecases for ADCS  
+- Creating new SSL certificates
+- Distribution of trusted certificates  
