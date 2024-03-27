@@ -5,7 +5,7 @@
 ### Index of Articles  
 
 [AD Certificate Services Setup](AD-CertServices.md)  
-[VEEAM Suite of Products](Veeam Suite.md)  
+[VEEAM Suite of Products](Veeam-Suite.md)  
 Installing Trusted Certificates on Infrastructure  
 First time setup for Linux hosts (including hardening process)  
 First time setup for Windows hosts (including hardening process)  
