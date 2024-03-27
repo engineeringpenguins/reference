@@ -53,6 +53,44 @@ If you select 'Issued Certificates' you get a list of all certificates **this** 
 
 ![ADCS common operations](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/adcs_use.png)  
 
+## Certificate Assignment & Enrollment  
+
+Active Directory will not automatically tell AD joined PC's about the new root CA/Subordinate CA. For AD joined devices running Windows you can use Group Policy Objects to save certificates to the local 'trusted store'. You will need to get the public certificate (.cer) of each CA in the certificate chain and import it into AD.
+
+Start by logging into your Root CA:
+
+1. Open the Certificate Services MMC
+2. Right click on the root CA in the navigation pane
+3. Hover over 'All Tasks' and click 'Backup CA' and click 'Next'
+4. Check the box for 'Private key and CA certificate'
+5. Click the 'Browse' button and navigate to the Downloads directory
+6. In the filepath to the left of browse, add a '\tmp\' after the '\Downloads'
+7. Click 'OK' on the dialogue box asking if you want to make the \tmp\ directory
+8. Use a good password on the following prompt to encrypt the file
+9. Click 'Finish' to complete the export to a .PFX file
+
+Log into a Domain Controller to continue:  
+
+1. Copy the .PFX file from the previous step to the DC
+2. Open the Group Policy MMC
+3. Create a new GPO or edit an existing one as makes sense
+4. Navigate to
+   1. Computer Configuration
+      1. Policies
+         1. Windows Settings
+            1. Security Settings
+               1. Public Key Policies
+5. Right click on the 'Trusted Root Certification Authorities' container/folder and click Import
+6. Click 'Browse' and select the .PFX file from the previous step and click 'Next'
+   1. you may need to change the filetype its looking for using the dropdown in the lower right
+7. Put in the password you used to encrypt the file
+   1. Do no check the box to make the key exportable
+   2. Check the box to Include all extended properties
+8. Click 'Next' and 'Finish'
+9. Right click on the 'Intermediate Certification Authorities' container/folder and click Import
+10. Repeat previous steps but log into the subordinate CA
+    1. Do this for every CA in the certificate chain
+
 ## Terms (Buzzwords)  
 
 - **Certificate** - File that encrypts communication or data (aka public key certificate)  
@@ -121,13 +159,22 @@ If you select 'Issued Certificates' you get a list of all certificates **this** 
 - Add a new Root CA using cert file  
   'certutil -addstore "Root" newRootCA.crt'  
 
+## MISC. Operations - not used or currently relevant  
+
+Export Public Key of a CA:
+
+1. Open the Certificate Services MMC
+2. Right click on the root CA in the navigation pane and click 'properties'
+3. The 'General' tab will open, click 'view certificate'
+4. Click the details tab on the following menu
+5. Select 'copy to file'
+6. Use DER encoded binary and proceed by clicking 'Next'
+7. Click 'Browse' and navigate to your target directory (if temporary I use Downloads)
+8. Type your file name in the dialog box and click 'Save' followed by 'Next' and 'Finish'
+
 ## Concepts Summary
 
 For a machine to trust a website using SSL the machine must 'trust' the certificate the website is using. At minimum there will be one Certificate Authority that signs a certificate (like a CEO signing approval on a document) but usually there are more than one Certificate Authorities signing a document (The CEO has authorized the CFO to sign a document with the CEO's authority). For a machine to trust that certificate it must trust every certificate authority listed in the certificate chain.  
-
-## References and Further Reading
-
-I don't have any external references or resources to provide. Its fairly intuitive so lab it up and click around.  
 
 ## Improving this article
 
@@ -136,4 +183,3 @@ If there is a usecase for it, I will add more content to this article:
 - Online enrollment via SCEP/NDES  
 - Usecases for ADCS  
 - Creating new SSL certificates
-- Distribution of trusted certificates  
