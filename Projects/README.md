@@ -8,4 +8,5 @@ AI Networking - Ethernet vs. Infiniband
 Azure GOAT
 Detection Lab
 SOC BOSS Projects
-stratus red team and atomic red team  
+Stratus red team and atomic red team  
+Kali Purple
