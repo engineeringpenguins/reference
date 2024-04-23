@@ -22,7 +22,7 @@ Advanced Data Types:
     Tuple: Series of multiple values that cant be changed, x = (45, “ex”, 3.2)  
     Dictionary: A list of pairs, x = {1:”one”, 2:”two”, 3:”three”}  
 
-Define variables with the equals (=) sign. In the following example x, y, and z are all variables that store the integer value of one (1). Ex. x = 1
+Define variables with the equals (=) sign. In the following example x is a variable that store the integer value of one (1). Ex. x = 1
 
 Loops:
     Recursion: Function calls itself, must code in an escape to prevent infinity  
