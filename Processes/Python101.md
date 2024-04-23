@@ -22,7 +22,7 @@ Advanced Data Types:
     Tuple: Series of multiple values that cant be changed, x = (45, “ex”, 3.2)  
     Dictionary: A list of pairs, x = {1:”one”, 2:”two”, 3:”three”}  
 
-Define variables with the equals (=) sign. In the following example x, y, and z are all variables that store the integer value of one (1). Ex. x = 1, y = 1, z = 2-1
+Define variables with the equals (=) sign. In the following example x, y, and z are all variables that store the integer value of one (1). Ex. x = 1
 
 Loops:
     Recursion: Function calls itself, must code in an escape to prevent infinity  
@@ -64,21 +64,21 @@ List Operations:
 
 ## Libraries & Packages
 
-![pip]( https://github.com/pypa/pip)  - Package manager  
-![Conda]( https://github.com/conda/conda/)  - Package manager  
+[pip](https://github.com/pypa/pip)  - Package manager  
+[Conda](https://github.com/conda/conda/)  - Package manager  
 
 ### Automation
 
-![ Ansible]( https://github.com/ansible/ansible)   - Server based deployment using playbooks  
-![ NAPALM]( https://github.com/napalm-automation/napalm)   - Network Automation  
-![ Celery]( https://github.com/celery/celery)   - OS task scheduler  
+[Ansible](https://github.com/ansible/ansible)   - Server based deployment using playbooks  
+[NAPALM](https://github.com/napalm-automation/napalm)   - Network Automation  
+[Celery](https://github.com/celery/celery)   - OS task scheduler  
 
 ### AI & ML
 
-![Pandas](https://github.com/pandas-dev/pandas)  - Manipulate tables in python (xlsx/csv formatted data can be used in python)  
-![ Numpy]( https://github.com/numpy/numpy)   - Gives other libraries ability to use arrays and math  
-![ MatPlotLib]( https://github.com/matplotlib/matplotlib) - 2D graphs and charts  
-![ SciKit-Learn]( https://github.com/scikit-learn/scikit-learn) - machine learning library  
-![Tensorflow]( https://github.com/tensorflow/tensorflow)  - Powerful AI framework  
-![PyTorch]( https://github.com/pytorch/pytorch)  - NumPy but GPU accelerated  
-![LangChain]( https://github.com/langchain-ai/langchain)  - Natural Language Processing  
+[Pandas](https://github.com/pandas-dev/pandas)  - Manipulate tables in python (xlsx/csv formatted data can be used in python)  
+[Numpy](https://github.com/numpy/numpy)   - Gives other libraries ability to use arrays and math  
+[MatPlotLib](https://github.com/matplotlib/matplotlib) - 2D graphs and charts  
+[SciKit-Learn](https://github.com/scikit-learn/scikit-learn) - machine learning library  
+[Tensorflow](https://github.com/tensorflow/tensorflow)  - Powerful AI framework  
+[PyTorch](https://github.com/pytorch/pytorch)  - NumPy but GPU accelerated  
+[LangChain](https://github.com/langchain-ai/langchain)  - Natural Language Processing  
