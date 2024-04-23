@@ -90,6 +90,7 @@ a.`sudo docker compose up -d`
 3.On the left hand side open the settings menu  
 4.Click on Device Scanners  
 5.Set these however makes sense for your usecase  
+
 ![NetAlertX Web](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/NetAlertXGUI.png)  
 
 ## NetData
