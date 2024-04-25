@@ -4,10 +4,24 @@
 
 RMM (Remote Monitoring and Management) is crucial to be proactive about your infrastructure. This article will cover some options for monitoring solutions and how to install them.
 
+<details>
+<summary>Table of Contents</summary>
+<ol>
+  <li><a href="#uptime-kuma"> Uptime Kuma</a></li>
+  <li><a href="#netalertx"> NetAlertX</a></li>
+  <li><a href="#netdata"> NetData</a></li>
+  <li><a href="#icinga2"> Icinga2</a></li>
+  <li><a href="#zabbix"> Zabbix</a></li>
+  <li><a href="#Nagios"> Nagios</a></li>
+</ol>
+</details>
+
 ## Applications
 
 If you don’t already have a directory for docker images create one now:  
 `sudo mkdir /docker`  
+
+<br>
 
 ### Uptime Kuma
 
@@ -15,7 +29,7 @@ If you don’t already have a directory for docker images create one now:
 
 Uptime Kuma is one of the top monitoring solutions in the open source community. It provides a simple, elegant, and scalable interface to monitor endpoints. Native sensor types include: Ping, HTTP APIs, DNS resolvers, Databases, Docker contaniers (if you have socket exposed), Steam Game Servers. You can also build custom status pages hosted on a subdomain of the Uptime Kuma server, allowing public visability into your chosen metrics. Uptime Kuma does come with built in MFA, Proxy Support, and integrations with a handful of notification services like Slack, Email, Pushover, etc.  
 
-[Uptime Kuma Repo](https://github.com/louislam/uptime-kuma) - what this documentation is based off of.
+[Uptime Kuma Repo](https://github.com/louislam/uptime-kuma) - what this documentation is based off of.  
 
 Install Uptime Kuma  
 
@@ -27,24 +41,26 @@ Install Uptime Kuma
    - `sudo nano docker-compose.yaml`  
 4. Paste the docker compose code below and save the document  
 
-### Uptime KumaDocker Compose  
+### Uptime Kuma Docker Compose  
 
 ```
 
-version: '3.3'  
+version: '3.3'
 
-services:  
-  uptime-kuma:  
-    image: louislam/uptime-kuma:1  
-    container_name: uptime-kuma  
-    volumes:  
-      - /docker/UptimeKuma/app/data:/app/data  
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    container_name: uptime-kuma
+    volumes:
+      - /docker/UptimeKuma/app/data:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
-    ports:  
-      - 3001:3001  
-    restart: always  
+    ports:
+      - 3001:3001
+    restart: always
 
 ```
+
+### Uptime Kuma Conclusion
 
 Configuring the application  
 1.Run the docker container  
@@ -57,13 +73,21 @@ a.`sudo docker compose up -d`
 
 ![Uptime Kuma Sensors](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/kumaMon.png)  
 
-### NetAlertX (Formally pi.alert)
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
+
+<br><br>
+
+### NetAlertX
 
 ![NetAlertX Web](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/NetAlertXDash.png)  
 
 PiAlert was the best original monitoring solution available for the raspberry pi. It has been forked a couple times and now exists as NetAlertX. Hardware/Binary installs are not supported and are not recommended by the developer so this is a docker project. NetAlert uses arp and nmap to discover devices but it can also integrate with other devices on your network with SNMP or vendor specific integrations like Unifi or PiHole.  
 
-[NetAlertX Repo](https://github.com/jokob-sk/NetAlertX) - what this documentation is based off of.
+[NetAlertX Repo](https://github.com/jokob-sk/NetAlertX) - what this documentation is based off of.  
 
 Prepare for container install  
 
@@ -79,42 +103,49 @@ Prepare for container install
 
 ```
 
-version: "3"  
-services:  
-  netalertx:  
-    container_name: netalertx  
-    image: "jokobsk/netalertx:latest"  
-    network_mode: "host"  
-    restart: unless-stopped  
-    volumes:  
-      - /docker/NetAlertX/config:/app/config  
-      - /docker/NetAlertX/app/db:/app/db  
-      - /docker/NetAlertX/app/front/log:/app/front/log  
-    environment:  
-      - TZ=America/Denver  
-      - PORT=20211  
+version: "3"
+services:
+  netalertx:
+    container_name: netalertx
+    image: "jokobsk/netalertx:latest"
+    network_mode: "host"
+    restart: unless-stopped
+    volumes:
+      - /docker/NetAlertX/config:/app/config
+      - /docker/NetAlertX/app/db:/app/db
+      - /docker/NetAlertX/app/front/log:/app/front/log
+    environment:
+      - TZ=America/Denver
+      - PORT=20211
 
 ```
 
 Configuring the application  
-1.Run the docker container  
-a.`sudo docker compose up -d`  
-2.Navigate to the ip of the website on port 20211  
-3.On the left hand side open the settings menu  
-4.Click on Device Scanners  
-5.Set these however makes sense for your usecase  
+
+1. Run the docker container  
+   - `sudo docker compose up -d`  
+2. Navigate to the ip of the website on port 20211  
+3. On the left hand side open the settings menu  
+4. Click on Device Scanners  
+5. Set these however makes sense for your usecase  
 
 ![NetAlertX Web](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/NetAlertXGUI.png)  
 
-\  
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
+
+<br><br>
 
 ## NetData
 
-![NetData Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/netdataDash.png)
+![NetData Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/netdataDash.png)  
 
 NetData touts itself as the no.1 solution due to being 50%-90% more efficient than its competitors and being designed for use 'out of the box' with minimal configuration. The product is extremely feature rich and customizeable with minimal effort, its very impressive that it runs ML against every metric in realtime and outputs a graph of anomolies.  
 
-[NetData Repo](https://github.com/netdata/netdata) - what this documentation is based off of.
+[NetData Repo](https://github.com/netdata/netdata) - what this documentation is based off of.  
 
 Install NetData  
 
@@ -130,56 +161,64 @@ Install NetData
 
 ```
 
-version: '3'  
-services:  
-  netdata:  
-    image: netdata/netdata  
-    container_name: netdata  
-    hostname: netdata  
-    pid: host  
-    network_mode: host  
-    restart: unless-stopped  
-    cap_add:  
-      - SYS_PTRACE  
-      - SYS_ADMIN  
-    security_opt:  
-      - apparmor:unconfined  
-    volumes:  
-      - /docker/netdata/etc:/etc/netdata  
-      - netdatalib:/var/lib/netdata  
-      - netdatacache:/var/cache/netdata  
-      - /etc/passwd:/host/etc/passwd:ro  
-      - /etc/group:/host/etc/group:ro  
-      - /etc/localtime:/etc/localtime:ro  
-      - /proc:/host/proc:ro  
-      - /sys:/host/sys:ro  
-      - /etc/os-release:/host/etc/os-release:ro  
-      - /var/log:/host/var/log:ro  
-      - /var/run/docker.sock:/var/run/docker.sock:ro  
+version: '3'
+services:
+  netdata:
+    image: netdata/netdata
+    container_name: netdata
+    hostname: netdata
+    pid: host
+    network_mode: host
+    restart: unless-stopped
+    cap_add:
+      - SYS_PTRACE
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /docker/netdata/etc:/etc/netdata
+      - netdatalib:/var/lib/netdata
+      - netdatacache:/var/cache/netdata
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /etc/os-release:/host/etc/os-release:ro
+      - /var/log:/host/var/log:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
 
-volumes:  
-  netdatalib:  
-  netdatacache:  
+volumes:
+  netdatalib:
+  netdatacache:
 
 ```
 
 ### NetData Conclusion
 
-1.Go to the NetData web interface on http port 19999  
-2.Add integrations by clicking the green 'integrations' button in the upper right  
-3.NetData built defaults for the server but from here you can setup other endpoints  
+1. Go to the NetData web interface on http port 19999  
+2. Add integrations by clicking the green 'integrations' button in the upper right  
+3. NetData built defaults for the server but from here you can setup other endpoints  
 
-![NetData Sources](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/netdataMon.png)
+![NetData Sources](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/netdataMon.png)  
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#readme-top" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
+
+<br><br>
 
 ## Grafana + Prometheus
 
-![Grafana Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/grametheusDash.png)
+![Grafana Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/grametheusDash.png)  
 
 Grafana and Prometheus are the iconic duo of monitoring tools despite being two seperate companies/products. Prometheus provides a realtime monitoring solution with a granular query language and Grafana provides an intuitive and versitle program to make stunning dashboards and visualize data. Grafana and Prometheus were not designed to be run in docker together and should typically be installed as system applications but we have used docker thus far so lets keep going. Its much easier to just install binaries, dont even think about using this in production.  
 
-[Grafana Repo](https://github.com/grafana/grafana)
-[Prometheus Repo](https://github.com/prometheus/prometheus)
-[Third party Compose](https://dzlab.github.io/monitoring/2021/12/30/monitoring-stack-docker/) - what this documentation is based off of.
+[Grafana Repo](https://github.com/grafana/grafana)  
+[Prometheus Repo](https://github.com/prometheus/prometheus)  
+[Third party Compose](https://dzlab.github.io/monitoring/2021/12/30/monitoring-stack-docker/) - what this documentation is based off of.  
 
 Install Grafana + Prometheus  
 
@@ -197,7 +236,7 @@ Install Grafana + Prometheus
 
 ```
 
-version: '3'  
+version: '3'
 
 volumes:
   prometheus_data: {}
@@ -244,7 +283,11 @@ services:
     ports:
       - 3000:3000
 
+```
+
 ### prometheus.yml
+
+```
 
 global:
   scrape_interval:     15s  
@@ -265,7 +308,11 @@ scrape_configs:
     static_configs:
       - targets: ['docker:9090']
 
+```
+
 ### grafana_config.ini
+
+```
 
 [paths]
 provisioning = /etc/grafana/provisioning
@@ -273,7 +320,11 @@ provisioning = /etc/grafana/provisioning
 [server]
 enable_gzip = true
 
+```
+
 ### grafana_datasources.yml
+
+```
 
 apiVersion: 1
 
@@ -283,7 +334,11 @@ datasources:
     access: 'proxy'
     url: 'http://prometheus:9090'
 
+```
+
 ### alertmanager.conf
+
+```
 
 global:
   resolve_timeout: 5m
@@ -306,29 +361,37 @@ receivers:
 
 This is a very base config and does not include any configuration for the alertmanager container. But should otherwise be a good starting point to build on. No need to login to prometheus or alertmanager, all work will be done in grafana.  
 
-1. Create empty file for alert manager
-   - `sudo touch alertmanager_rules.yml`
-2. Navigate to the ip of the website on port 3000 for grafana
-3. Login with admin/admin
-4. Open the Dashboards menu on the far left navigation
-5. Click the blue '+ Create Dashboard' button in the center of the screen
-6. On the following screen click the '+ Add Visualization' button
-7. Select the 'Prometheus' option (should be the only option)
-8. Use the metric dropdown and select your desired metric
-9. Run the query using the 'Run Query' button in the middle right
-10. Choose what visualization you want in the upper right
-11. Continue creating visualizations and save the dashboard
+1. Create empty file for alert manager  
+   - `sudo touch alertmanager_rules.yml`  
+2. Navigate to the ip of the website on port 3000 for grafana  
+3. Login with admin/admin  
+4. Open the Dashboards menu on the far left navigation  
+5. Click the blue '+ Create Dashboard' button in the center of the screen  
+6. On the following screen click the '+ Add Visualization' button  
+7. Select the 'Prometheus' option (should be the only option)  
+8. Use the metric dropdown and select your desired metric  
+9. Run the query using the 'Run Query' button in the middle right  
+10. Choose what visualization you want in the upper right  
+11. Continue creating visualizations and save the dashboard  
 
-![Grafana Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/grametheusMon.png)
+![Grafana Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/grametheusMon.png)  
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
+
+<br><br>
 
 ## Icinga2
 
-![Icinga2 Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/icingaDash.png)
+![Icinga2 Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/icingaDash.png)  
 
 Icinga2 is the most powerful and configurable monitoring solution I have ever used. Without a PhD from icinga university I find it to be a very difficult solution to get started with but the potential is unlimited. Historically there was a lot of C++ and programming elements to the management and operation of icinga but with the advent of their 'Director' solution you are now able to do it from a web portal.  
 
-[Icinca2 Repo](https://github.com/Icinga/icinga2)
-[Third party Compose](https://github.com/lippserd/docker-compose-icinga/tree/master) - what this documentation is based off of.
+[Icinca2 Repo](https://github.com/Icinga/icinga2)  
+[Third party Compose](https://github.com/lippserd/docker-compose-icinga/tree/master) - what this documentation is based off of.  
 
 Use the following docker configuration to get things set up but it is 1000% easier and a better choice to install a binary or from source, there are some unique exchanges in the docker process here that make things needlessly complex.  
 
@@ -345,6 +408,7 @@ Use the following docker configuration to get things set up but it is 1000% easi
 ### Icinga2 Docker Compose
 
 ```
+
 version: '3.7'
 
 x-icinga-db-web-config:
@@ -518,7 +582,11 @@ volumes:
   icingaweb:
   mysql:
 
+```
+
 ### icingadb.conf
+
+```
 
 library "icingadb"
 
@@ -527,14 +595,22 @@ object IcingaDB "icingadb" {
     port = 6379
 }
 
+```
+
 ### icingaweb-api-user.conf
+
+```
 
 object ApiUser "icingaweb" {
   password = "$ICINGAWEB_ICINGA2_API_USER_PASSWORD"
   permissions = [ "*" ]
 }
 
+```
+
 ### init-icinga2.sh (create inside /docker/icinga2/env/icinga2)
+
+```
 
 #!/usr/bin/env bash
 
@@ -550,7 +626,11 @@ if [ ! -f /data/etc/icinga2/features-enabled/icingadb.conf ]; then
   cat /config/icingadb.conf >/data/etc/icinga2/features-enabled/icingadb.conf
 fi
 
+```
+
 ### init-mysql.sh (create inside /docker/icinga2/env/mysql)
+
+```
 
 #!/bin/sh -x
 
@@ -590,14 +670,34 @@ Update file permissions
 
 > Drop everything with: sudo docker compose -p icinga-playground down
 
-![Icinga2 Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/icingaMon.png)
+![Icinga2 Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/icingaMon.png)  
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
+
+<br><br>
 
 ## Zabbix
 
+![Zabbix Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/zabbixMon.png)  
+
 Zabbix is a bit of a spiderweb for their docker configuration so I found it much simpler just to clone the repo and work with it locally or use a third party compose solution (which is what I do below). While certainly a very common enterprise solution I believe it is falling behind some of the earlier solutions in this article.  
 
-[Zabbix Repo](https://github.com/zabbix/zabbix-docker)
-[Third party Compose](https://github.com/USBAkimbo/Random/blob/master/Docker/zabbix.yml)
+[Zabbix Repo](https://github.com/zabbix/zabbix-docker)  
+[Third party Compose](https://github.com/USBAkimbo/Random/blob/master/Docker/zabbix.yml) - what this documentation is based off of.  
+
+1. Create the root folder  
+   - `sudo mkdir -p /docker/Zabbix/`  
+2. Navigate to the root directory for the container  
+   - `cd /docker/Zabbix`  
+3. Create the remaining folder for persistent volumes
+   - `sudo mkdir -p zabbix-db/mariadb zabbix-db/backups zabbix-server/alertscripts zabbix-server/externalscripts zabbix-server/dbscripts zabbix-server/export zabbix-server/modules zabbix-server/enc  zabbix-server/ssh_keys zabbix-server/mibs zabbix-web/nginx zabbix-web/modules/`
+4. Create the docker compose file  
+   - `sudo nano docker-compose.yaml`  
+5. Paste the docker compose code below and save the document  
 
 ### Zabbix Docker Compose
 
@@ -617,7 +717,7 @@ services:
       - mariadbd
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_bin
-      - --default-authentication-plugin=mysql_native_password
+#      - --default-authentication-plugin=mysql_native_password
     environment:
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
@@ -670,13 +770,42 @@ services:
       - DB_SERVER_HOST=zabbix-db
       - ZBX_SERVER_HOST=zabbix-server
       - ZBX_SERVER_NAME=Zabbix Docker
-      - PHP_TZ=Europe/London
+      - PHP_TZ=America/Denver
     depends_on:
       - zabbix-db
       - zabbix-server
     stop_grace_period: 10s
 
 ```
+
+### Zabbix Conclusion
+
+Define Variables
+
+1. Create an environment variable file for docker to read
+   - `sudo nano .env`
+2. Define the varibles used in the compose file
+   - `echo -e "MYSQL_USER=zabbix\nMYSQL_PASSWORD=zabbix\nMYSQL_ROOT_PASSWORD=FiY3G39pLqvktDbDM1mr\nZABBIX_DATA_PATH=/docker/Zabbix\nZBX_STARTPINGERS=2" | sudo tee .env`  
+
+> I cant seem to get the zabbix-server to take the enviornment variable and build the config in /etc/zabbix/zabbix_server.conf so I left MYSQL_USER and MYSQL_PASSWORD at the defaults, dont do this in production.  
+
+Zabbix Config  
+
+1. Navigate to the webserver on port 8080  
+   - Default login is Admin/zabbix  
+2. Click on the Monitoring dropdown on the far left  
+3. Select the Hosts option and click "Create Host" in the upper right  
+4. I just built a basic SNMP connection but Zabbix supports most methods of discovery and monitoring  
+
+![Zabbix Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/zabbixMon.png)  
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
+
+<br>
 
 ## Nagios
 
