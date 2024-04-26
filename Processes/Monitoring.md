@@ -2,7 +2,7 @@
 
 ## Introduction  
 
-RMM (Remote Monitoring and Management) is crucial to be proactive about your infrastructure. This article will cover some options for monitoring solutions and how to install them.
+RMM (Remote Monitoring and Management) is crucial to be proactive about your infrastructure. This article will cover some options for monitoring solutions and how to install them. Log aggregation, alerting, and SIEM for these solutions will be covered in a future post.  
 
 <details>
 <summary>Table of Contents</summary>
@@ -71,6 +71,8 @@ a.`sudo docker compose up -d`
 5.Provide the display name and hostname of the endpoint  
 6.Add to any organizational groups before saving  
 
+<br>
+
 ![Uptime Kuma Sensors](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/kumaMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
@@ -79,7 +81,7 @@ a.`sudo docker compose up -d`
     </a>
 </p>
 
-<br><br>
+<br><br><br>
 
 ### NetAlertX
 
@@ -129,6 +131,8 @@ Configuring the application
 4. Click on Device Scanners  
 5. Set these however makes sense for your usecase  
 
+<br>
+
 ![NetAlertX Web](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/NetAlertXGUI.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
@@ -137,7 +141,7 @@ Configuring the application
     </a>
 </p>
 
-<br><br>
+<br><br><br>
 
 ## NetData
 
@@ -200,6 +204,8 @@ volumes:
 2. Add integrations by clicking the green 'integrations' button in the upper right  
 3. NetData built defaults for the server but from here you can setup other endpoints  
 
+<br>
+
 ![NetData Sources](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/netdataMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
@@ -208,7 +214,7 @@ volumes:
     </a>
 </p>
 
-<br><br>
+<br><br><br>
 
 ## Grafana + Prometheus
 
@@ -374,6 +380,8 @@ This is a very base config and does not include any configuration for the alertm
 10. Choose what visualization you want in the upper right  
 11. Continue creating visualizations and save the dashboard  
 
+<br>
+
 ![Grafana Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/grametheusMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
@@ -382,7 +390,7 @@ This is a very base config and does not include any configuration for the alertm
     </a>
 </p>
 
-<br><br>
+<br><br><br>
 
 ## Icinga2
 
@@ -670,6 +678,8 @@ Update file permissions
 
 > Drop everything with: sudo docker compose -p icinga-playground down
 
+<br>
+
 ![Icinga2 Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/icingaMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
@@ -678,7 +688,7 @@ Update file permissions
     </a>
 </p>
 
-<br><br>
+<br><br><br>
 
 ## Zabbix
 
@@ -797,6 +807,8 @@ Zabbix Config
 3. Select the Hosts option and click "Create Host" in the upper right  
 4. I just built a basic SNMP connection but Zabbix supports most methods of discovery and monitoring  
 
+<br>
+
 ![Zabbix Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/zabbixMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
@@ -805,14 +817,173 @@ Zabbix Config
     </a>
 </p>
 
-<br>
+<br><br><br>
 
 ## Nagios
 
-## PRTG
+![Nagios Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/nagiosDash.png)  
+
+Nagios was the leader in monitoring and management for many years and is still one of the most widely deployed solutions and has an extensive dev community that build plugins and UIs. Not as aesthetically appealing as some of its competitors but it makes up for it in features and flexibility. There are a significant number of add-ons, plugins, UIs, themes, integrations, etc. that really allow the Nagios product to be more than just a monitoring solution. It is not designed for docker containers and similar to ichinga2 you will get a much more stable experience running the application directly on the OS and not with docker. The original Nagios is still maintained and is presented as an enterprise grade open source solution and it still behaves and looks like the original from the early 2000's and goes by "Nagios Core". Their fancy version that markets itself as the industry leading solution is currently called "Nagios XI" and offers much more features and integrations with the base installation. We are going to look at Nagios Core due to its simplicity and availability in a third party docker solution.  
+
+> Nagios XI has a "free" version for 7 nodes or 100 services, there is not currently a docker image for it but maybe I will create one soon.
+
+[Nagios Repo](https://github.com/NagiosEnterprises/nagioscore)  - no native docker solution
+[Third party Compose](https://github.com/JasonRivers/Docker-Nagios) - what this documentation is based off of.  
+
+1. Create the root volume for the container 
+   - `sudo mkdir -p /docker/Nagios`  
+2. Navigate to the root directory for the container  
+   - `cd /docker/Nagios`  
+3. Create the docker compose file  
+   - `sudo nano docker-compose.yml`  
+4. Paste the docker compose code below and save the document  
+
+### Nagios Docker Compose
+
+```
+version: '3'
+services:
+  nagios:
+    image: jasonrivers/nagios:latest
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+    - nagiosetc:/opt/nagios/etc
+    - nagiosvar:/opt/nagios/var
+    - customplugins:/opt/Custom-Nagios-Plugins
+    - nagiosgraphvar:/opt/nagiosgraph/var
+    - nagiosgraphetc:/opt/nagiosgraph/etc
+
+volumes:
+    nagiosetc:
+    nagiosvar:
+    customplugins:
+    nagiosgraphvar:
+    nagiosgraphetc:
+```
+
+### Nagios Configs
+
+You don't actually configure Nagios from the web interface (with the base installation) and primarily work with local config files. Most people leverage plugins like NRPE to enhance the configuration but we are just going to do this the traditional way.
+
+1. Open the Nagios config directory  
+   - `cd /var/lib/docker/volumes/nagios_nagiosetc/objects`  
+2. Create a new config file for endpoints  
+   - `sudo touch hosts.cfg`  
+3. Create a new config file for services  
+   - `sudo touch services.cfg`  
+4. Use the templates provided below to populate the config files  
+
+### Nagios hosts.cfg
+
+```
+define hostgroup {
+    hostgroup_name    linux-hostgroup
+    alias             linux servers
+}
+define host {
+    name                     linux-template
+    use                      generic-host
+    check_period             24x7
+    check_interval           1
+    retry_interval           1
+    max_check_attempts       10
+    check_command            check-host-alive
+    notification_period      24x7
+    notification_interval    30
+    notification_options     d,r
+    contact_groups           admins
+    hostgroups               linux-hostgroup
+    register                 0
+}
+define host {
+    use                     linux-template
+    host_name               myhost
+    alias                   My Host
+    address                 192.168.1.100
+}
+```
+
+### Nagios services.cfg
+
+```
+define service{
+    name                            linux-service         
+    active_checks_enabled           1                       
+    passive_checks_enabled          1                       
+    parallelize_check               1                       
+    obsess_over_service             1                       
+    check_freshness                 0                       
+    notifications_enabled           1                       
+    event_handler_enabled           1                       
+    flap_detection_enabled          1                       
+    process_perf_data               1                       
+    retain_status_information       1                       
+    retain_nonstatus_information    1                       
+    is_volatile                     0                       
+    check_period                    24x7                    
+    max_check_attempts              3                       
+    check_interval                  10                      
+    retry_interval                  2                       
+    contact_groups                  admins                 
+    notification_options            w,u,c,r                 
+    notification_interval           60                      
+    notification_period             24x7                   
+      register                      0                      
+    }
+define service {
+    use                     linux-service
+    host_name               myhost
+    service_description     PING
+    check_command           check_ping!100.0,20%!500.0,60%
+}
+```
+
+### Nagios Conclusion
+
+1. Start the Docker container  
+   - sudo docker compose up -d  
+2. Navigate to the webserver on port 8080  
+   - Default login is nagiosadmin/nagios  
+3. View the base dashboards on nagios core using the "current status" menu on the left  
+
+![Nagios Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/nagiosMon.png)  
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
+
+<br><br><br>
 
 ## Munin
 
+https://github.com/ethersys/ethersys-docker-munin
+
+### Munin Docker Compose
+
+```
+version: "3"
+services:
+  munin:
+    image: dockurr/munin
+    container_name: munin
+    environment:
+      TZ: "America/Denver"
+      NODES: "node1:10.5.11.180"
+    ports:
+      - 80:80
+    volumes:
+      - /docker/Munin/lib:/var/lib/munin
+      - /docker/Munin/log:/var/log/munin
+      - /docker/Munin/conf:/etc/munin/munin-conf.d
+      - /docker/Munin/plugin:/etc/munin/plugin-conf.d
+    restart: on-failure
+    stop_grace_period: 1m
+```
+
 ## Cacti
 
-## Loki
+## PRTG
