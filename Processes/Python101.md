@@ -6,61 +6,85 @@ This article is still a work in progress as I continue to improve my Python skil
 
 Python is platform agnostic, uses natural language, and is extremely powerful. It is currently (2024) my primary programming language due to its versatility and community support.
 
+<br>
+
 ## Programming101
 
-Line indentation changes the *scope* of the code, you know the drill, 4 spaces no tab.
+### Visual Structure:
 
-Data Types:  
-    String: alphanumeric characters stored verbatim, typically words and phrases  
-    Integer: numerical non decimal value (whole number), ex. 4815162342  
-    Float: numerical decimal value, 3.14  
-    Boolean: true or false value, 5 == 2 would result in a false value  
+- Line indentation changes the *scope* of the code
 
-Advanced Data Types:  
-    Complex: defined and undefined values, x = 83j  
-    List: Series of multiple values that can be changed, x = [45, “ex”, 3.2]  
-    Tuple: Series of multiple values that cant be changed, x = (45, “ex”, 3.2)  
-    Dictionary: A list of pairs, x = {1:”one”, 2:”two”, 3:”three”}  
+### Data Types:
 
-Define variables with the equals (=) sign. In the following example x is a variable that store the integer value of one (1). Ex. x = 1
+- String: alphanumeric characters stored verbatim, typically words and phrases  
+- Integer: numerical non decimal value (whole number), ex. 4815162342  
+- Float: numerical decimal value, 3.14  
+- Boolean: true or false value, 5 == 2 would result in a false value  
 
-Loops:
-    Recursion: Function calls itself, must code in an escape to prevent infinity  
-    Iteration: Processing items in a loop  
-    Break: escape loop and leave iteration  
-    Continue: escape loop and move to next iteration  
+### Advanced Data Types:  
 
-String Methods:  
-    Slicing: Only output characters in a range, ex. x[0:10] would display 10 characters of the variable x (which hopefully is a string)  
-    Joining: Combine strings and concatenate and add a delineating character, ex . y.join(x)  
+- Complex: defined and undefined values, x = 83j  
+- List: Series of multiple values that can be changed, x = [45, “ex”, 3.2]  
+- Tuple: Series of multiple values that cant be changed, x = (45, “ex”, 3.2)  
+- Dictionary: A list of pairs, x = {1:”one”, 2:”two”, 3:”three”}  
+
+### Loops:
+
+- Recursion: Function calls itself, must code in an escape to prevent infinity  
+- Iteration: Processing items in a loop  
+- Break: escape loop and leave iteration  
+- Continue: escape loop and move to next iteration  
+
+### String Methods:  
+
+- Slicing: Only output characters in a range, ex. x[0:10] would display 10 characters of the variable x (which hopefully is a string)  
+- Joining: Combine strings and concatenate and add a delineating character, ex . y.join(x)  
+
+<br>
 
 ## Common Commands
 
-Debugging can be done by putting code inside of a loop consisting of: **try**, **except**, **else**  
+### Debugging:
 
-Record a user interaction by using input()  
+- **try**: Execute code
+- **except**: If an error appears do this
+- **else**: Otherwise do this
 
-Comments:  
-    **””” triple quotes “””**: Create block comments  
-    **# pound sign**: Create line comments  
+### User Interaction:
 
-Transforming Data:  
-    **str()** - converts to a string  
-    **int()** - converts to an integer  
+- **input()**: Store users keyboard input
 
-File Operations:  
-    **open**: You can read, write, or append a file, ex. Open(sample.txt, r)  
-    **file.read**: Limit the read operation to only a portion of the file  
-    **file.write**: Write information to the end of the file  
-    **file.close**: Releases the file back to the OS  
+### Comments:  
 
-List Operations:  
-    **x.append** - Adds data to the end of list x  
-    **x.remove(y)** - Destroys y from list x  
-    **x.insert(y,z)** - inserts z at position y in list x  
-    **x.index(y)** - Output the position of y in list x  
-    **x.extend(y)** - Concatenate list y into list x  
-    **len(x)** - Returns number of items in list x  
+- **””” triple quotes “””**: Create block comments  
+- **# pound sign**: Create line comments  
+
+### Variables:
+
+- *=*: Define variables
+
+### Transforming Data:  
+
+- **str()** - converts to a string  
+- **int()** - converts to an integer  
+
+### File Operations:  
+
+- **open**: You can read, write, or append a file, ex. Open(sample.txt, r)  
+- **file.read**: Limit the read operation to only a portion of the file  
+- **file.write**: Write information to the end of the file  
+- **file.close**: Releases the file back to the OS  
+
+### List Operations:  
+
+- **x.append** - Adds data to the end of list x  
+- **x.remove(y)** - Destroys y from list x  
+- **x.insert(y,z)** - inserts z at position y in list x  
+- **x.index(y)** - Output the position of y in list x  
+- **x.extend(y)** - Concatenate list y into list x  
+- **len(x)** - Returns number of items in list x  
+
+<br>
 
 ## Libraries & Packages
 
