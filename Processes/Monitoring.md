@@ -2,19 +2,24 @@
 
 ## Introduction  
 
-RMM (Remote Monitoring and Management) is crucial to be proactive about your infrastructure. This article will cover some options for monitoring solutions and how to install them. Log aggregation, alerting, and SIEM for these solutions will be covered in a future post.  
+RMM (Remote Monitoring and Management) is crucial to be proactive about your infrastructure. This article will cover open source monitoring solutions and how to install them with docker on Ubuntu. Writing this in the event I forget everything about monitoring solutions and want to lab something quickly. Log aggregation, alerting, and SIEM for these solutions will be covered in a future post.  
 
-<details>
-<summary>Table of Contents</summary>
+<br>
+
+### Table of Contents
+
 <ol>
   <li><a href="#uptime-kuma"> Uptime Kuma</a></li>
   <li><a href="#netalertx"> NetAlertX</a></li>
   <li><a href="#netdata"> NetData</a></li>
   <li><a href="#icinga2"> Icinga2</a></li>
   <li><a href="#zabbix"> Zabbix</a></li>
-  <li><a href="#Nagios"> Nagios</a></li>
+  <li><a href="#nagios"> Nagios</a></li>
+  <li><a href="#munin"> Munin</a></li>
+  <li><a href="#cacti"> Cacti</a></li>
 </ol>
 </details>
+<br>
 
 ## Applications
 
@@ -667,9 +672,10 @@ Again, using this method of installation makes an already difficult product even
 Update file permissions
 
 1. Update file permissions on the two scripts
-   - sudo chmod +x /docker/icinga2/env/mysql/init-mysql.sh
-   - sudo chmod +x /docker/icinga2/init-icinga2.sh
-2. sudo docker compose -p icinga-playground up -d
+   - `sudo chmod +x /docker/icinga2/env/mysql/init-mysql.sh`
+   - `sudo chmod +x /docker/icinga2/init-icinga2.sh`
+2. Start the Container
+   - `sudo docker compose -p icinga-playground up -d`
 3. Navigate to the ip of the website on port 8080
    - The API listens on port 5665
 4. Login with icingaadmin and icinga
@@ -943,7 +949,7 @@ define service {
 ### Nagios Conclusion
 
 1. Start the Docker container  
-   - sudo docker compose up -d  
+   - `sudo docker compose up -d`  
 2. Navigate to the webserver on port 8080  
    - Default login is nagiosadmin/nagios  
 3. View the base dashboards on nagios core using the "current status" menu on the left  
@@ -960,30 +966,168 @@ define service {
 
 ## Munin
 
-https://github.com/ethersys/ethersys-docker-munin
+![Munin Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/muninMon.png)  
+
+Munin is a monitoring system typically deployed with a partner program (Hunin) that handles orchestration and automation. Typically I see Munin set up as an information gathering tool and the information is piped to Nagios or Grafana for additional analysis and visualization. The usecase for Munin is the power it brings with its twin (Hunin) and that it is agent based which allows for easy configuration and management. Munin does not have docker support but we will be using a third party image.  
+
+[Munin Repo](https://github.com/munin-monitoring/munin) - no docker support  
+[Third Party Repo](https://github.com/aheimsbakk/container-munin) - What this documentation is based off of
 
 ### Munin Docker Compose
 
 ```
 version: "3"
+
 services:
-  munin:
-    image: dockurr/munin
-    container_name: munin
-    environment:
-      TZ: "America/Denver"
-      NODES: "node1:10.5.11.180"
+  munin-server:
+    container_name: "munin-server"
+    image: aheimsbakk/munin-alpine
+    restart: unless-stopped
     ports:
       - 80:80
+    environment:
+      NODES: server1:10.5.11.180
+      TZ: America/Denver
     volumes:
-      - /docker/Munin/lib:/var/lib/munin
-      - /docker/Munin/log:/var/log/munin
-      - /docker/Munin/conf:/etc/munin/munin-conf.d
-      - /docker/Munin/plugin:/etc/munin/plugin-conf.d
-    restart: on-failure
-    stop_grace_period: 1m
+      - /docker/Munin/etc/munin/munin-conf.d:/etc/munin/munin-conf.d 
+      - /docker/Munin/etc/munin/plugin-conf.d:/etc/munin/plugin-conf.d 
+      - /docker/Munin/var/lib/munin:/var/lib/munin 
+      - /docker/Munin/var/log/munin:/var/log/munin  
 ```
+
+### Munin Monitoring Configuration
+
+Setup Munin agent on remote endpoint
+
+1. Install the Munin agent on a host you want to monitor
+   - `sudo sudo apt install munin-node`
+2. Configure the Munin agent
+   - `sudo nano /etc/munin/munin-node.conf`
+3. Add the ip address of your Munin controller with an "allow" statement
+   - RegEx in the form of ^172\.28\.1\.1$
+4. Restart Munin Agent
+   - `sudo systemctl restart munin-node`
+
+We handled setting the remote endpoint on the Munin controller in the docker compose file but if you need to add anything after the fact: `sudo nano/docker/Munin/etc/munin/munin-conf.d/nodes.conf`  
+
+### Munin Conclusion
+
+1. Start the Docker container  
+   - `sudo docker compose up -d`  
+2. Navigate to the webserver on port 80  
+   - Give it a minute if no immediate response  
+3. Click on the host you created (server1) to access the graphs  
+
+![Munin Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/muninMon.png)  
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
+
+<br><br><br>
 
 ## Cacti
 
-## PRTG
+![Cacti Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/cactiDash.png)  
+
+Cacti is a very old monitoring tool that has continued to compete with Nagios for decades. It bosts a similar support and dev community to Nagios but provides much simpler configuration and management at the cost of less features (although very minimal functionality is lost). They do not natively support docker so to keep with the recurring theme in this article I will advise against using unsupported docker images in production.  
+
+[Cacti Repo](https://github.com/Cacti/cacti) - No docker support  
+[Third Party Repo](https://github.com/scline/docker-cacti/tree/master) - What this documentation is based off of  
+
+### Cacti Docker Compose
+
+```
+version: '3.5'
+services:
+
+
+  cacti:
+    image: "smcline06/cacti"
+    container_name: cacti
+    hostname: cacti
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - DB_NAME=cacti_master
+      - DB_USER=cactiuser
+      - DB_PASS=cactipassword
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_ROOT_PASS=rootpassword
+      - INITIALIZE_DB=1
+      - TZ=America/Denver
+    volumes:
+      - cacti-data:/cacti
+      - cacti-spine:/spine
+      - cacti-backups:/backups
+    links:
+      - db
+
+
+  db:
+    image: "mariadb:10.3"
+    container_name: cacti_db
+    hostname: db
+    ports:
+      - "3306:3306"
+    command:
+      - mysqld
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --max_connections=200
+      - --max_heap_table_size=128M
+      - --max_allowed_packet=32M
+      - --tmp_table_size=128M
+      - --join_buffer_size=128M
+      - --innodb_buffer_pool_size=1G
+      - --innodb_doublewrite=ON
+      - --innodb_flush_log_at_timeout=3
+      - --innodb_read_io_threads=32
+      - --innodb_write_io_threads=16
+      - --innodb_buffer_pool_instances=9
+      - --innodb_file_format=Barracuda
+      - --innodb_large_prefix=1
+      - --innodb_io_capacity=5000
+      - --innodb_io_capacity_max=10000
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - TZ=America/Denver
+    volumes:
+      - cacti-db:/var/lib/mysql
+
+
+volumes:
+  cacti-db:
+  cacti-data:
+  cacti-spine:
+  cacti-backups:
+```
+
+### Cacti Conclusion
+
+1. Start the Docker container  
+   - `sudo docker compose up -d`  
+2. Navigate to the webserver on port 80  
+   - Default login is admin/admin  
+3. Set new admin password when prompted  
+4. Set your theme and accept EULA on the following screen  
+5. Review the pre-run checks and continue  
+6. Select 'new primary server' and proceed to the next screen  
+7. Accept any prechecks and script execution approval  
+8. For the 'default automation network' specify a cidr range for auto detection  
+9. Accept default templates and additional prechecks  
+10. When prompted check the box indicating that you are ready to install and continue  
+11. On the console page click on 'Create' and then 'New Device' using the menu on the right  
+12. Create any devices manually and create graphs for them using the same menu  
+
+![Cacti Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/cactiMon.png)  
+
+<p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
+    <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
+        ↑ Back to Top ↑
+    </a>
+</p>
