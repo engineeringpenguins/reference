@@ -5,13 +5,13 @@
 ### Index of Articles  
 
 [AD Certificate Services Setup](AD-CertServices.md)  
-[VEEAM Suite of Products](Veeam-Suite.md)  
+[VEEAM Products](Veeam-Suite.md)  
 [Python Cheat Sheet](python101.md)  
 [Monitoring Solutions](Monitoring.md)  
-[Linux Setup](Linux-Setup.md)
-Installing Trusted Certificates on Infrastructure  
-First time setup for Windows hosts  
+[Linux Setup](Linux-Setup.md)  
+Windows Setup  
+Certificate Management  
+Syslog Solutions  
 Databases 101 (MsSQL, Postgres, noSQL)  
 Automation via Ansible, Jinja, and Teraform  
 Intune and Endpoint Manager Administration  
-WSL2 setup and configuration  
