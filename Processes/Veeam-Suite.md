@@ -4,7 +4,7 @@
 
 VEEAM is THE authority and leading solution for data backup, migration, replication, and recovery of VMWare (and generic storage) enviornments. While they are not officially a VMWare product, VMWare uses VEEAM for their own data backups.  
 
-This article aims to walk you through the most popular VEEAM tools, their set up and use, and how to leverage them effectively.  
+This article aims to walk through the initial setup of common VEEAM products.  
 
 ## VEEAM Backup and Replication
 
@@ -27,7 +27,7 @@ Start by creating a backup repository that exists on your local network.
 
 VEEAM Backup for Office 365 is a tool for creating backups of enterprise O365 data. The most common usecases are to create user level backups of OneDrive and Exchange (Online or On-Prem) content but it is also possible to backup Sharepoint sites (Online or On-Prem) and Teams.
 
-![VEEAM 365 backup](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/veeam/veeam0365.png)  
+![VEEAM 365 backup](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/veeam/veeam_o365.png)  
 
 ### Post Install Configuration
 
@@ -49,7 +49,7 @@ Start by linking an organization:
 
 You can save your data locally or in the cloud, ideally you would do both. To use Azure you will need to use an Azure storage account. Use an existing storage account or create a new one and navigate to the blob containers and use an existing one or create a new container. Grab one of the two access keys from the storage account for VEEAM to use to access the blob container.
 
-![Azure Keys](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/veeam/veeam_azureKey.png)  
+![Azure Keys](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/veeam/veeam_keys.png)  
 
 Add a storage location:
 
