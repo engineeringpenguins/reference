@@ -26,7 +26,7 @@ RMM (Remote Monitoring and Management) is crucial to be proactive about your inf
 If you don’t already have a directory for docker images create one now:  
 `sudo mkdir /docker`  
 
-<br>
+<br><br>
 
 ### Uptime Kuma
 
@@ -85,8 +85,11 @@ a.`sudo docker compose up -d`
         ↑ Back to Top ↑
     </a>
 </p>
+<br>
 
-<br><br><br>
+---
+
+<br>
 
 ### NetAlertX
 
@@ -145,8 +148,11 @@ Configuring the application
         ↑ Back to Top ↑
     </a>
 </p>
+<br>
 
-<br><br><br>
+---
+
+<br>
 
 ## NetData
 
@@ -218,8 +224,11 @@ volumes:
         ↑ Back to Top ↑
     </a>
 </p>
+<br>
 
-<br><br><br>
+---
+
+<br>
 
 ## Grafana + Prometheus
 
@@ -394,8 +403,11 @@ This is a very base config and does not include any configuration for the alertm
         ↑ Back to Top ↑
     </a>
 </p>
+<br>
 
-<br><br><br>
+---
+
+<br>
 
 ## Icinga2
 
@@ -693,8 +705,11 @@ Update file permissions
         ↑ Back to Top ↑
     </a>
 </p>
+<br>
 
-<br><br><br>
+---
+
+<br>
 
 ## Zabbix
 
@@ -822,8 +837,11 @@ Zabbix Config
         ↑ Back to Top ↑
     </a>
 </p>
+<br>
 
-<br><br><br>
+---
+
+<br>
 
 ## Nagios
 
@@ -961,8 +979,11 @@ define service {
         ↑ Back to Top ↑
     </a>
 </p>
+<br>
 
-<br><br><br>
+---
+
+<br>
 
 ## Munin
 
@@ -1025,8 +1046,11 @@ We handled setting the remote endpoint on the Munin controller in the docker com
         ↑ Back to Top ↑
     </a>
 </p>
+<br>
 
-<br><br><br>
+---
+
+<br>
 
 ## Cacti
 
