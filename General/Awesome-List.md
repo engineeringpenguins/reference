@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is basically just my bookmarks bar, verrrrrrry slowly getting things added. Most of it is open source and everything is something I want to remember for future use.  
+This is basically just my bookmarks bar. Most of it is open source and everything is something I want to remember for future use.  
 
 ### Table of Contents
 
@@ -86,6 +86,16 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 ## Educational & Other Awesome Lists
 
+### Online Learning Platforms
+
+- ['CBT Nuggets' General IT courses and paths](https://cbt-nuggets.com/)
+
+- ['INE' IT training delivers on their slogan of "experts at making you an expert"](https://ine.com)
+
+- ['Brilliant' general STEM courses but very interactive and engaging](https://brilliant.org)
+
+- ['CodeAcademy' great platform to keep buying annual memberships I don't use](https://www.codecademy.com/)
+
 ### Network
 
 - ['Awesome PCAP' list of tools for network analysis](https://github.com/caesar0301/awesome-pcaptools)
@@ -128,6 +138,8 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['Build your own X' list of projects built in differrent ways](https://github.com/codecrafters-io/build-your-own-x)
 
+- ['Hitchikers guide to Python' is a great Python handbook](https://github.com/realpython/python-guide)
+
 ### AI
 
 - ['Awesome Machine Learning' list of Machine Learning resources](https://github.com/josephmisiti/awesome-machine-learning)
@@ -137,6 +149,8 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 - ['Awesome GPT Prompts' list of usefull or funny ChatGPT prompts](https://github.com/f/awesome-chatgpt-prompts)
 
 - ['Awesome AI Security' resources for pentesting AI](https://github.com/DeepSpaceHarbor/Awesome-AI-Security)
+
+- ['OpenAI prompt Engineering' official guide for ChatGPT](https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/)
 
 ### General
 
@@ -157,12 +171,19 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 ## Networking
 
+### VPN
 
-- ['TailScale' Wireguard mesh VPN service](https://github.com/tailscale/tailscale)
+- ['TailScale' Wireguard mesh ZTNA VPN service](https://github.com/tailscale/tailscale)
 
-- ['NetMaker' Wireguard mesh VPN service](https://github.com/netmaker/netmaker)
+- ['HeadScale' TailScale without the Tail](https://github.com/juanfont/headscale)
+
+- ['ZeroTier' Wireguard mesh ZTNA VPN service](https://github.com/zerotier/ZeroTierOne)
+
+- ['NetMaker' Wireguard mesh ZTNA VPN service](https://github.com/netmaker/netmaker)
 
 - ['Yggdraisel-Go' ipv6 tunneling p2p mesh](https://github.com/yggdrasil-network/yggdrasil-go)
+
+- ['OpenVPN' VPN tunneling service](https://github.com/OpenVPN/openvpn)
 
 ### SSH Clients
 
@@ -180,6 +201,8 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['Privaxy' Recursive DNS that can blackhole adlists](https://github.com/Barre/privaxy)
 
+- ['Unbound' Recursive DNS with security focus](https://github.com/NLnetLabs/unbound)
+
 - ['DNSdiag' Suite of tools to monitor integrety of DNS](https://github.com/farrokhi/dnsdiag)
 
 - ['DNSTwist' scan for domain spoofing, typos, phishing domains](https://github.com/elceef/dnstwist)
@@ -188,7 +211,9 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 ### Discovery & Testing
 
-- ['Wireshare' GUI PCAP tool](https://www.wireshark.org/)
+- ['Hping' ping if it had a PhD](https://github.com/antirez/hping)
+
+- ['Wireshark' GUI PCAP tool](https://www.wireshark.org/)
 
 - ['Nmap' feature rich network scanning](https://github.com/nmap/nmap)
 
@@ -208,6 +233,26 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['ethr' cross platform bandwidth measurement](https://github.com/Microsoft/Ethr)
 
+### Vendors
+
+- ['Free Range Routing' opensource lightweight Cisco](https://github.com/FRRouting/frr)
+
+- ['OCNOS' Successor to ZebraOS](https://www.ipinfusion.com/products/ocnos-vm/)
+
+- ['OPX' virtualize a switch in Linux](https://github.com/open-switch/opx-build)
+
+- ['OpenWRT' popular solution to flash your home router](https://github.com/openwrt/openwrt)
+
+- ['PicOS' NetworkOS using WinRar model of "try it free forever but please buy"](https://www.pica8.com/picos-software/)
+
+### Uncategorized Networking
+
+- ['FD.IO' crazy fast layer 2 dataplane for Linux](https://fd.io/)
+
+- ['Open Virtual Network' parent of OVS](https://github.com/ovn-org/ovn)
+
+- ['BIRD' ezmode BGP on Linux](https://bird.network.cz/)
+
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
         ↑ Back to Top ↑
@@ -219,7 +264,15 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 ### Virtualization
 
+- ['Vagrant' original containerization tool](https://github.com/hashicorp/vagrant)
+
+- ['Nomad' container orchestration](https://github.com/hashicorp/nomad)
+
 - ['NS3' is a very powerful Network Simulator](https://www.nsnam.org/)
+
+- ['Windows Subsystem for Linux' WSL lets you run Linux under the hood in windows](https://github.com/microsoft/WSL)
+
+- ['Nvidia Air' is a public FREE (how?) Datacenter simulator](https://air.nvidia.com/SimulationsAll)
 
 ### Linux Distros
 
@@ -231,9 +284,13 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['Hardened BSD' super secure 'definitely not linux'](https://github.com/HardenedBSD/hardenedBSD)
 
+- ['Kali' Ubuntu rebuilt as pentesting OS](https://www.kali.org/)
+
 - ['Tails' ephemeral and sandboxed OS](https://tails.net/index.en.html)
 
-- ['QUBES' extremely abstracted security focused OS](https://www.qubes-os.org/)
+- ['QUBES' extremely abstracted *nix + BSD security focused OS](https://www.qubes-os.org/)
+
+- ['Serenity' Windows 95 but in Unix](https://github.com/SerenityOS/serenity)
 
 ### Terminals & Shells
 
@@ -242,6 +299,10 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 - ['Oh My Posh' Aesthetic shell for Linux](https://github.com/JanDeDobbeleer/oh-my-posh)
 
 - ['Oh My Zsh' Aesthetic shell for Linux](https://github.com/ohmyzsh/ohmyzsh)
+
+- ['Zellij' TMUX with much more features](https://github.com/zellij-org/zellij)
+
+- ['Windows Terminal' Aesthetic terminal emulator with WSL integration](https://github.com/microsoft/terminal)
 
 ### Observability
 
@@ -259,6 +320,32 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['NCDU' Granular Linux disk usage tool](https://dev.yorhel.nl/ncdu)
 
+- ['WTFutil' fancy variant of top](https://github.com/wtfutil/wtf)
+
+- ['BTOP' fancy variant of top](https://github.com/aristocratos/btop)
+
+- ['neofetch' Aesthetic system information](https://github.com/dylanaraps/neofetch)
+
+### Data Transfer & Storage
+
+- ['Borg2' FAST encrypted data deduplication for backups](https://github.com/borgbackup/borg)
+
+- ['Duplicati' bit level backups to cloud storage](https://github.com/duplicati/duplicati)
+
+### Databases
+
+- ['Azure Data Studio' SQL client, Storage blobs, great tool that no one wants to learn](https://github.com/microsoft/azuredatastudio)
+
+### Uncategorized Systems
+
+- ['Chocolatey' Windows package manager](https://github.com/chocolatey/choco)
+
+- ['Winget' Native Windows package manager](https://github.com/microsoft/winget-cli)
+
+- ['thefuck' corrects syntax on Linux CLI](https://github.com/nvbn/thefuck)
+
+- ['PowerToys' suite of QoL tools for Windows](https://github.com/microsoft/PowerToys)
+
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
         ↑ Back to Top ↑
@@ -268,19 +355,17 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 ## Security
 
-- ['Have I been pwned' will check if your email has shown up in a data breach](https://haveibeenpwned.com/)
-
-- ['PacketFence' is an open source NAC](https://github.com/inverse-inc/packetfence)
-
-- ['Hacking Tool' Pentesting multi-tool](https://github.com/Z4nzu/hackingtool)
-
-- ['Scapy' network packet manipulation and forgery](https://github.com/secdev/scapy)
+For Linux based offense or defense systems see <a href="#linux-distros">Linux Distros</a>  
 
 ### Privacy
 
 - ['Searx' self hosted search engine](https://github.com/searx/searx)
 
 - ['Proton Mail' end to end encrypted mail service](https://proton.me/mail)
+
+- ['Anonaddy' email masking & forwarding](https://github.com/anonaddy/anonaddy)
+
+- ['Have I been pwned' check if your email has shown up in a data breach](https://haveibeenpwned.com/)
 
 ### Research
 
@@ -290,15 +375,37 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['CVE' Common Vulnerabilities and Exposures](https://www.cve.org/)
 
+- ['SECFORCE' SOCAAS with public database](https://www.secforce.com/blog/)
+
+- ['IntelOwl' Threat intelligence and forensics tool](https://github.com/intelowlproject/IntelOwl)
+
 ### Protect
 
+- ['PacketFence' is an open source NAC](https://github.com/inverse-inc/packetfence)
+
 - ['GrapheneX' Control pannel to automate securing linux system](https://github.com/grapheneX/grapheneX)
+
+- ['Sentinal Attack' Automate config of Azure Sentinel](https://github.com/netevert/sentinel-attack)
+
+- ['Flare' Reverse engineering toolkit for windows](https://github.com/mandiant/flare-vm)
+
+- ['Cloudlist' asset inventory and assessment](https://github.com/projectdiscovery/cloudlist)
+
+### Attack
+
+- ['Commando' Hacking suite as a Windows augmentation](https://github.com/mandiant/commando-vm)
+
+- ['Hacking Tool' Pentesting multi-tool](https://github.com/Z4nzu/hackingtool)
+
+- ['Nuclei' Vulnerability assessment and scanner](https://github.com/projectdiscovery/nuclei)
 
 ### Cryptography
 
 - ['OpenSSL' Cryptography library and SSL toolkit](https://github.com/openssl/openssl)
 
 - ['CertBot' Automate Lets Encrypt](https://github.com/certbot/certbot)
+
+### Uncategorized Security
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -307,7 +414,41 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 </p>
 <br><br>
 
-## Dev Resources
+## DevOps
+
+### Cloud Providers
+
+- ['Liquid Web' VPS focused economy provider](https://www.liquidweb.com/)
+
+- ['Hetzner' offers older hardware hosting for reduced cost](https://www.hetzner.com/)
+
+### Automation
+
+- ['Ansible' agentless push and pull](https://github.com/ansible/ansible)
+
+- ['Salt' agentless push pull](https://github.com/saltstack/salt)
+
+- ['NAPALM' Network Automation](https://github.com/napalm-automation/napalm)
+
+- ['Terraform' deploy and configure cloud infrastructure](https://github.com/hashicorp/terraform)
+
+- ['Chef' controller + nodes model](https://github.com/chef/chef)
+
+- ['Puppet' controller + nodes model](https://github.com/puppetlabs/puppet)
+
+- ['Jenkins' CI/CD focused automation](https://github.com/jenkinsci/jenkins)
+
+### Workflow
+
+- ['Gitea' Selfhosted Git](https://github.com/go-gitea/gitea)
+
+- ['Gogs' Selfhosted Git](https://github.com/gogs/gogs)
+
+- ['Poetry' Python package and project manager](https://github.com/python-poetry/poetry)
+
+- ['Celery' programming task scheduler](https://github.com/celery/celery)
+
+### References
 
 - ['The Algorithms' contains python algorithms](https://github.com/TheAlgorithms/Python)
 
@@ -319,6 +460,12 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['Curl' pull HTTP/HTTPs from CLI](https://github.com/curl/curl)
 
+### Frameworks & Libraries
+
+- ['PyNaCl' Python + Network & Cryptography](https://github.com/pyca/pynacl)
+
+- ['Scapy' network packet manipulation and forgery](https://github.com/secdev/scapy)
+
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
         ↑ Back to Top ↑
@@ -328,15 +475,65 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 ## Artifical Intelligence & Machine Learning
 
-### AI apps and models
+### AI Models & Interaction
+
+- ['Alphafold' predictive AI from DeepMind](https://github.com/google-deepmind/alphafold)
 
 - ['ChatDev' is a multi agent self hosted LM](https://github.com/ChatDev/ChatDev)
 
 - ['HuggingFace' hosts AI models and Datasets](https://huggingface.co/)
 
+- ['Civitai' hosts AI models and extensions for Stable Diffusion](https://civitai.com/)
+
 - ['AnythingLLM' front end for any AI model](https://github.com/AnythingLLM/AnythingLLM)
 
 - ['Ollama' is a front end to interface with local LLM](https://github.com/Ollama/Ollama)
+
+- ['Groq Playground' front end to interface with public LLMs using Groq chips](https://console.groq.com/playground)
+
+- ['Stable Diffusion UI' Community front end for Stable Diffusion](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
+
+- ['ShellGPT' Interact with LLMs in the terminal](https://github.com/TheR1D/shell_gpt)
+
+### AI Driven Applications
+
+- ['Reclaim' AI scheduling assistant](https://reclaim.ai/)
+
+- ['Durable' Website generator](https://durable.co/)
+
+- ['Kaiber' stunning txt2video](https://kaiber.ai/)
+
+- ['Leia' image to 3D animations](https://www.leiapix.com/)
+
+- ['Loudly' text to audio](https://www.loudly.com/)
+
+- ['Maroofy' Music reccomendations](https://maroofy.com/)
+
+- ['Vocal Remover' isolate instrumentation from vocals](https://vocalremover.org/)
+
+- ['Resend' bypass spam filters for mass emails](https://resend.com/about)
+
+- ['Warp' AI co-pilot for the terminal](https://www.warp.dev/)
+
+- ['genie' Legal assistant](https://us.genieai.co/)
+
+- ['Canva' AI design tool](https://canva.com/)
+
+- ['WavTool' browser based DAW with AI](https://wavtool.com/)
+
+- ['Consensus' Research paper search](https://consensus.app/)
+
+- ['Luma' mobile app to create 3D Models from images](https://lumalabs.ai/)
+
+- ['Skybox' generate 3D scenes and enviornments](https://skybox.blockadelabs.com/)
+
+- ['Tome' presentation generator](https://tome.app/)
+
+- ['Quillbot' suite of grammar and language tools](https://quillbot.com/)
+
+- ['Deepbrain' Text to video](https://www.deepbrain.io/)
+
+- ['PromptPerfect' optimize prompts](https://promptperfect.jina.ai/)
 
 ### Develop AI
 
@@ -356,11 +553,17 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['LangChain' provides natural language processing tools](https://github.com/langchain-ai/langchain)
 
+- ['PyOpenAI' Python OpenAI library](https://github.com/openai/openai-python)
+
 <br>
 
 ### Business Intelligence & Data analytics
 
 - ['Grafana' provides aesthetic data visualizations](https://github.com/grafana/grafana)
+
+- ['MetaBase' user friendly data visualizations](https://github.com/metabase/metabase)
+
+- ['Spark' big data analytics tool](https://github.com/apache/spark)
 
 <br>
 
@@ -381,9 +584,19 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['Infinite-Mac' emulate vintage macs in browser](https://github.com/mihaip/infinite-mac)
 
-- ['fake name generator' create fake identity](https://www.fakenamegenerator.com/)
+- ['Blendr' advanced video and animation editor](https://github.com/blender/blender)
 
-- ['this person does not exist' randomly generate portraits](https://www.fakenamegenerator.com/)
+- ['Godot' 2D/3D game engine](https://github.com/godotengine/godot)
+
+- ['Grimore' feature rich bookmark host](https://github.com/goniszewski/grimoire)
+
+- ['Dashy' powerful homepage builder](https://github.com/Lissy93/dashy)
+
+### CLI Tools
+
+- ['lolcat' text transformation/color formatting](https://github.com/busyloop/lolcat)
+
+- ['Doom-ASCII' Play Doom on your terminal](https://github.com/wojciech-graj/doom-ascii)
 
 ### Life Hacks
 
@@ -391,7 +604,13 @@ This is basically just my bookmarks bar, verrrrrrry slowly getting things added.
 
 - ['Get Human' has shortcuts to get through an IVR](https://gethuman.com/)
 
-- ['Corrupt a File' will corrupt a file](https://corrupt-a-file.net/)
+- ['fake name generator' create fake identity](https://www.fakenamegenerator.com/)
+
+- ['this person does not exist' randomly generate portraits](https://www.fakenamegenerator.com/)
+
+- ['Corrupt a File' to escape deadlines for submissions](https://corrupt-a-file.net/)
+
+> Dropping 0's in ip address bypasses WAF
 
 ### Utility Scripts
 
