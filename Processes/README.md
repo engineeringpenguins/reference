@@ -18,6 +18,8 @@
 - Infrastructure Administration  
   - [Monitoring Solutions](Monitoring.md)  
   - [VEEAM Products](Veeam-Suite.md)
-  - Syslog Solutions - WiP
-  - Certificate Management  - WiP
+  - Syslog Solutions - WiP  
+  - Certificate Management  - WiP  
   - Intune/Endpoint Manager - WiP  
+- Nvidia  
+  - Air + NetQ - WiP
