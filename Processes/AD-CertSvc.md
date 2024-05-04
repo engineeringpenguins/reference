@@ -1,14 +1,14 @@
 # Active Directory Certificate Serivces  
 
-Active Directory (AD) Certificate Services (CS) can be pretty rough to work with when things dont behave correctly. This article will run through everything you would need to be conversational (read: complain to sysadmins) about ADCS.
-
 ## Introduction and Background ('How to SSL good')  
 
-We can't talk about any kind of Certificate Authority (CA) without highlighting operations the internet takes when using SSL. In ye olden times when a host accessed a remote file it would communicate without any encryption. People were not as mean in ye olden times and the internet was a much smaller place so your PC broadcasting potentially confidential information everywhere did not present the same concerns that it does today. Unfortunately, people are more mean now and so we have to be careful what unauthorized parties can see.  
+Active Directory (AD) Certificate Services (CS) can be pretty rough to work with when things dont behave correctly. This article will run through everything you would need to be conversational (read: complain to sysadmins) about ADCS.
 
-Prior to encryption technologies like SSL, when a client connected to a server it would use a protocol like HTTP, FTP, Telnet, SMB1, SNMP1, etc. These protocols would communicate over the network (very simple analogy) by essentially sending text files between client and server. Every other machine on that network could observe these communications and read the text files being exchanged. It might not be a big deal if someone overhears your phone call with a coworker, but you probably wouldnt want someone to listen in on a phone call to your bank. One way to obfuscate the contents of your phone calls would be to speak in a foregin language that anyone listening doesnt know. Essentially that is what encryption does to data protected by SSL.  
+You can't talk about any kind of Certificate Authority (CA) without highlighting operations the internet takes when using SSL. In ye olden times when a host accessed a remote file it would communicate without any encryption. People were not as mean in ye olden times and the internet was a much smaller place, so your PC broadcasting potentially confidential information everywhere did not present the same concerns that it does today. People are more mean now, necessitating the need for encrypted data.  
 
-![comparing encrypted vs unencrypted local traffic](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/adcs_lan.png)  
+Prior to encryption technologies like SSL, when a client connected to a server it would use a protocol like HTTP, FTP, Telnet, SMB1, SNMP1, etc. These protocols would communicate over the network (very simple analogy) by essentially sending text files between client and server. Every other machine on that network could observe these communications and read the text files being exchanged. It **might** not be a big deal if someone overhears a happy birthday email, but overhearing the authentication for a bank account presents a bigger concern. One way to obfuscate the contents of your communication would be to speak in a foregin language that anyone listening doesnt know. Essentially that is what encryption does to data protected by SSL.  
+
+![Comparing encrypted vs unencrypted local traffic](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/adcs_lan.png)  
 
 Now, when a client is connected to a server it might use a protocol like HTTPS, FTPS/VSFTP/SCP, SSH, SMB3, SNMP3, etc. These protocols communicate over the network (repeating simple analogy) by sending encrypted files written in a made up language that only the client and server know about. The 'made up language' in this case is the SSL certificate.  
 
