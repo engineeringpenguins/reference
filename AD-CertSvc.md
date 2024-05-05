@@ -8,7 +8,7 @@ You can't talk about any kind of Certificate Authority (CA) without highlighting
 
 Prior to encryption technologies like SSL, when a client connected to a server it would use a protocol like HTTP, FTP, Telnet, SMB1, SNMP1, etc. These protocols would communicate over the network (very simple analogy) by essentially sending text files between client and server. Every other machine on that network could observe these communications and read the text files being exchanged. It **might** not be a big deal if someone overhears a happy birthday email, but overhearing the authentication for a bank account presents a bigger concern. One way to obfuscate the contents of your communication would be to speak in a foregin language that anyone listening doesnt know. Essentially that is what encryption does to data protected by SSL.  
 
-![Comparing encrypted vs unencrypted local traffic](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/adcs_lan.png)  
+![Comparing encrypted vs unencrypted local traffic](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/adcs/adcs_lan.png)  
 
 Now, when a client is connected to a server it might use a protocol like HTTPS, FTPS/VSFTP/SCP, SSH, SMB3, SNMP3, etc. These protocols communicate over the network (repeating simple analogy) by sending encrypted files written in a made up language that only the client and server know about. The 'made up language' in this case is the SSL certificate.  
 
@@ -27,7 +27,7 @@ The 'certificate chain' or 'certificate hierarchy' will provide a tree view of w
 - Also called 'the chain of trust', it shows the root CA and any intermediate CA's that signed this certificate  
 - Your device will not trust the certificate unless it knows every member of the chain (the root and any intermediate authorities)  
 
-![Example of github ssl certification](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/adcs_cert.png)  
+![Example of github ssl certification](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/adcs/adcs_cert.png)  
 
 ## Preparing Active Directory for Certificate Services  
 
@@ -37,7 +37,7 @@ Today I'm going to build an AD integrated root CA and not worry about setting up
 
 I'm using Windows Server 2022 for this example but anything previous Server releases will work. Start by using the Server Manager to add roles and features, 'Active Directory Certificate Services' should be the first role you can add so just check the box and click 'Next' through the following prompts. I personally like to enable 'Certificate Authority Web Enrollment' on one of the following screens so that domain admins can access the CA via internal website and request certificates without having to remote into the ADCS host.  
 
-![Begin setup of ADCS](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/adcs_setup.png)  
+![Begin setup of ADCS](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/adcs/adcs_setup.png)  
 
 Use appropriate level credentials to approve configuration of ADCS, check the box for ADCS (dont check other services we enabled yet), leave the radio button selected for 'Enterprise CA', select 'root CA', select 'create a new private key', leave the default at RSA 2048, leave the name as default (if you want to change it I would reccomend having '-CA' on the end of the name for organization), leave the validity period at 5 years, leave the default location for the certificate database, select configure to finish setup.
 
@@ -51,7 +51,7 @@ By selecting 'Pending requests' you would see any certificates that were submitt
 If you select 'Issued Certificates' you get a list of all certificates **this** CA has issued.
 - Right click and revoke or export certificates for redeployment.  
 
-![ADCS common operations](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/adcs_use.png)  
+![ADCS common operations](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/adcs/adcs_use.png)  
 
 ## Certificate Assignment & Enrollment  
 

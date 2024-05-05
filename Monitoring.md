@@ -30,7 +30,7 @@ If you don’t already have a directory for docker images create one now:
 
 ### Uptime Kuma
 
-![Uptime Kuma Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/kumaDash.png)  
+![Uptime Kuma Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/kumaDash.png)  
 
 Uptime Kuma is one of the top monitoring solutions in the open source community. It provides a simple, elegant, and scalable interface to monitor endpoints. Native sensor types include: Ping, HTTP APIs, DNS resolvers, Databases, Docker contaniers (if you have socket exposed), Steam Game Servers. You can also build custom status pages hosted on a subdomain of the Uptime Kuma server, allowing public visability into your chosen metrics. Uptime Kuma does come with built in MFA, Proxy Support, and integrations with a handful of notification services like Slack, Email, Pushover, etc.  
 
@@ -78,7 +78,7 @@ a.`sudo docker compose up -d`
 
 <br>
 
-![Uptime Kuma Sensors](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/kumaMon.png)  
+![Uptime Kuma Sensors](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/kumaMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -93,7 +93,7 @@ a.`sudo docker compose up -d`
 
 ### NetAlertX
 
-![NetAlertX Web](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/NetAlertXDash.png)  
+![NetAlertX Web](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/NetAlertXDash.png)  
 
 PiAlert was the best original monitoring solution available for the raspberry pi. It has been forked a couple times and now exists as NetAlertX. Hardware/Binary installs are not supported and are not recommended by the developer so this is a docker project. NetAlert uses arp and nmap to discover devices but it can also integrate with other devices on your network with SNMP or vendor specific integrations like Unifi or PiHole.  
 
@@ -141,7 +141,7 @@ Configuring the application
 
 <br>
 
-![NetAlertX Web](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/NetAlertXGUI.png)  
+![NetAlertX Web](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/NetAlertXGUI.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -156,7 +156,7 @@ Configuring the application
 
 ## NetData
 
-![NetData Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/netdataDash.png)  
+![NetData Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/netdataDash.png)  
 
 NetData touts itself as the no.1 solution due to being 50%-90% more efficient than its competitors and being designed for use 'out of the box' with minimal configuration. The product is extremely feature rich and customizeable with minimal effort, its very impressive that it runs ML against every metric in realtime and outputs a graph of anomolies.  
 
@@ -217,7 +217,7 @@ volumes:
 
 <br>
 
-![NetData Sources](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/netdataMon.png)  
+![NetData Sources](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/netdataMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#readme-top" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -232,7 +232,7 @@ volumes:
 
 ## Grafana + Prometheus
 
-![Grafana Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/grametheusDash.png)  
+![Grafana Example](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/grametheusDash.png)  
 
 Grafana and Prometheus are the iconic duo of monitoring tools despite being two seperate companies/products. Prometheus provides a realtime monitoring solution with a granular query language and Grafana provides an intuitive and versitle program to make stunning dashboards and visualize data. Grafana and Prometheus were not designed to be run in docker together and should typically be installed as system applications but we have used docker thus far so lets keep going. Its much easier to just install binaries, dont even think about using this in production.  
 
@@ -396,7 +396,7 @@ This is a very base config and does not include any configuration for the alertm
 
 <br>
 
-![Grafana Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/grametheusMon.png)  
+![Grafana Config](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/grametheusMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -411,7 +411,7 @@ This is a very base config and does not include any configuration for the alertm
 
 ## Icinga2
 
-![Icinga2 Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/icingaDash.png)  
+![Icinga2 Example](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/icingaDash.png)  
 
 Icinga2 is the most powerful and configurable monitoring solution I have ever used. Without a PhD from icinga university I find it to be a very difficult solution to get started with but the potential is unlimited. Historically there was a lot of C++ and programming elements to the management and operation of icinga but with the advent of their 'Director' solution you are now able to do it from a web portal.  
 
@@ -698,7 +698,7 @@ Update file permissions
 
 <br>
 
-![Icinga2 Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/icingaMon.png)  
+![Icinga2 Config](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/icingaMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -713,7 +713,7 @@ Update file permissions
 
 ## Zabbix
 
-![Zabbix Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/zabbixMon.png)  
+![Zabbix Example](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/zabbixMon.png)  
 
 Zabbix is a bit of a spiderweb for their docker configuration so I found it much simpler just to clone the repo and work with it locally or use a third party compose solution (which is what I do below). While certainly a very common enterprise solution I believe it is falling behind some of the earlier solutions in this article.  
 
@@ -830,7 +830,7 @@ Zabbix Config
 
 <br>
 
-![Zabbix Config](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/zabbixMon.png)  
+![Zabbix Config](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/zabbixMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -845,7 +845,7 @@ Zabbix Config
 
 ## Nagios
 
-![Nagios Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/nagiosDash.png)  
+![Nagios Example](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/nagiosDash.png)  
 
 Nagios was the leader in monitoring and management for many years and is still one of the most widely deployed solutions and has an extensive dev community that build plugins and UIs. Not as aesthetically appealing as some of its competitors but it makes up for it in features and flexibility. There are a significant number of add-ons, plugins, UIs, themes, integrations, etc. that really allow the Nagios product to be more than just a monitoring solution. It is not designed for docker containers and similar to ichinga2 you will get a much more stable experience running the application directly on the OS and not with docker. The original Nagios is still maintained and is presented as an enterprise grade open source solution and it still behaves and looks like the original from the early 2000's and goes by "Nagios Core". Their fancy version that markets itself as the industry leading solution is currently called "Nagios XI" and offers much more features and integrations with the base installation. We are going to look at Nagios Core due to its simplicity and availability in a third party docker solution.  
 
@@ -972,7 +972,7 @@ define service {
    - Default login is nagiosadmin/nagios  
 3. View the base dashboards on nagios core using the "current status" menu on the left  
 
-![Nagios Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/nagiosMon.png)  
+![Nagios Example](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/nagiosMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -987,7 +987,7 @@ define service {
 
 ## Munin
 
-![Munin Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/muninMon.png)  
+![Munin Dashboard](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/muninMon.png)  
 
 Munin is a monitoring system typically deployed with a partner program (Hunin) that handles orchestration and automation. Typically I see Munin set up as an information gathering tool and the information is piped to Nagios or Grafana for additional analysis and visualization. The usecase for Munin is the power it brings with its twin (Hunin) and that it is agent based which allows for easy configuration and management. Munin does not have docker support but we will be using a third party image.  
 
@@ -1039,7 +1039,7 @@ We handled setting the remote endpoint on the Munin controller in the docker com
    - Give it a minute if no immediate response  
 3. Click on the host you created (server1) to access the graphs  
 
-![Munin Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/muninMon.png)  
+![Munin Example](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/muninMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
@@ -1054,7 +1054,7 @@ We handled setting the remote endpoint on the Munin controller in the docker com
 
 ## Cacti
 
-![Cacti Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/cactiDash.png)  
+![Cacti Example](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/cactiDash.png)  
 
 Cacti is a very old monitoring tool that has continued to compete with Nagios for decades. It bosts a similar support and dev community to Nagios but provides much simpler configuration and management at the cost of less features (although very minimal functionality is lost). They do not natively support docker so to keep with the recurring theme in this article I will advise against using unsupported docker images in production.  
 
@@ -1148,7 +1148,7 @@ volumes:
 11. On the console page click on 'Create' and then 'New Device' using the menu on the right  
 12. Create any devices manually and create graphs for them using the same menu  
 
-![Cacti Example](https://github.com/engineeringpenguins/reference/blob/main/Processes/Linked-Images/monitor/cactiMon.png)  
+![Cacti Example](https://github.com/engineeringpenguins/reference/blob/main/Linked-Images/monitor/cactiMon.png)  
 
 <p align="right" style="font-size: 14px; color: #555; margin-top: 20px;">
     <a href="#introduction" style="text-decoration: none; color: #007bff; font-weight: bold;">
