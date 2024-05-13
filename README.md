@@ -12,7 +12,7 @@
   - [Linux Setup](Linux-Setup.md)
   - Linux Solutions - WiP
 - DevOps  
-  - [Python Cheat Sheet](python101.md)
+  - [Python Cheat Sheet](Python101.md)
   - Databases (MSSQL, MariaDB, Postgres) - WiP
   - Automation (Ansible, Jinja, Teraform) - WiP
 - Infrastructure Administration  
@@ -23,3 +23,5 @@
   - Intune/Endpoint Manager - WiP  
 - Nvidia  
   - Air + NetQ - WiP
+- Misc.
+  - Unraid - WiP
