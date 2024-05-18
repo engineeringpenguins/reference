@@ -1,6 +1,6 @@
 # Processes & Procedures  
 
-## This is a glorified knowledge base to save me time and effort looking things up
+## This is a glorified knowledge base to save me time looking things up
 
 ### Index of Articles  
 
@@ -21,7 +21,7 @@
   - Syslog Solutions - WiP  
   - Certificate Management  - WiP  
   - Intune/Endpoint Manager - WiP  
-- Nvidia  
-  - Air + NetQ - WiP
-- Misc.
-  - Unraid - WiP
+  - NAS Solutions - WiP
+- Virtualization
+  - [Network Emulators](netsim-options.md)
+  - Nvidia Air + NetQ - WiP
