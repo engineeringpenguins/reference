@@ -5,12 +5,12 @@
 ### Index of Articles  
 
 - Microsoft  
-  - [ADCS Setup](AD-CertSvc.md)
-  - Windows Setup - WiP
-  - ADDS Setup - WiP  
+  - [ADCS Intro](AD-CertSvc.md)
+  - [ADDS Intro](AD-DomSvc.md)
+  - [Windows Setup](Windows-Setup.md)  
 - Linux
   - [Linux Setup](Linux-Setup.md)
-  - Linux Solutions - WiP
+  - Linux Distros - WiP
 - DevOps  
   - [Python Cheat Sheet](Python101.md)
   - Databases (MSSQL, MariaDB, Postgres) - WiP
@@ -25,3 +25,5 @@
 - Virtualization
   - [Network Emulators](netsim-options.md)
   - Nvidia Air + NetQ - WiP
+- Nonprofit
+  - Dynamics365 - WiP
