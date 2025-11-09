@@ -1,3 +1,5 @@
+This repo has been deprecated; all updates will be on pinguengineering.com
+
 # Processes & Procedures  
 
 ## This is a glorified knowledge base to save me time looking things up
